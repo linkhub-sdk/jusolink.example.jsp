@@ -207,7 +207,7 @@
 							</div>
 							<div class="btn_list">
 								<p class="btn_ok hand" onclick="inputAddr();" tabindex=5>확인</p>
-								<a href="zipcode_search.php"><p class="btn_reset hand" tabindex=6>다시검색</p></a>
+								<a href="zipcode_search.jsp"><p class="btn_reset hand" tabindex=6>다시검색</p></a>
 							</div>
 						</div>
 
