@@ -22,6 +22,6 @@
 
 <%-- DMZ Proxy 설정시 아래코드 참조 --%>
 <%-- Linkhub 인증 Proxy Target --%>
-<%-- <jsp:setProperty name="jusolinkService" property="authURL" value="http://192.168.0.228:9080"/> --%>
+<%-- <jsp:setProperty name="jusolinkService" property="authURL" value="http://{ProxyIP:Port}"/> --%>
 <%-- Jusolink API Proxy Target --%>
-<%-- <jsp:setProperty name="jusolinkService" property="serviceURL" value="http://192.168.0.228:9082"/> --%>
+<%-- <jsp:setProperty name="jusolinkService" property="serviceURL" value="http://{ProxyIP:Port}"/> --%>
