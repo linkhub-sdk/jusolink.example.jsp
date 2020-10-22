@@ -44,7 +44,7 @@
 				<br/>
 				<fieldset class="fieldset5 left">
 					<legend>주소검색</legend>
-							<form method = "GET" id="zipcode_form" action="zipcode_search.jsp">
+							<form method = "GET" id="zipcode_form" action="zipcode_search.jsp" onkeydown="return event.key != 'Enter';">
 								<input class= "txtZipcode left" type="text" id="IndexWord" name="IndexWord" tabindex=1 placeholder="예) 영동대로 517, 아셈타워, 삼성동 159" value='<%=result!=null ? result.getSearches():""%>'>
 								<input type="hidden" type="text" id="PageNum" name="PageNum">
 								<input type="hidden" type="text" id="PerPage" name="PerPage" value=20>
