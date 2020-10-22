@@ -5,7 +5,7 @@
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/main.css" media="screen" />
 		<title>주소검색 SDK JSP Example.</title>
 	</head>
-	
+
 <%@ include file="common.jsp" %>
 <%@page import="java.util.List"%>
 <%@page import="com.jusolink.api.Juso"%>
@@ -16,7 +16,7 @@
 	SearchResult result = null;
 
 	if(request.getParameter("IndexWord") != null){
-		
+
 		String IndexWord = request.getParameter("IndexWord");				// [필수] 검색어
 
 		// 페이지번호
@@ -27,7 +27,7 @@
 		Boolean noDiff = false;								// 차등검색 끄기 (기본값 false)
 
 		try {
-			
+
 			result = jusolinkService.searchAddress(IndexWord, pageNum, perPage, noSuggest, noDiff);
 
 		} catch (JusoLinkException je) {
@@ -55,9 +55,9 @@
 								// 주소검색 결과 출력
 							%>
 
-								<div class="result_box">				
+								<div class="result_box">
 									<p class="example left">검색결과 : <%=result.getNumFound()%> 개</p>
-								<% 
+								<%
 									if(result.getSuggest() != null){
 									// 수정제시어 출력
 								%>
@@ -100,11 +100,11 @@
 								<p> <img class="imgAlign" src="../resources/image/juso_icon_03.gif"/> <%=juso.get(i).getRelatedJibun()%></p>
 						<%
 							}
-						%>			
+						%>
 					</fieldset>
 					<%
 						}
-					%>		
+					%>
 					<div class="page_num">
 						<img class="hand" onclick='prevPage();' alt="이전"  src="../resources/image/juso_btn_prev.png">
 							<span class="current" id="current_page"><%=result.getPage()%></span>
@@ -136,8 +136,8 @@
 								<li>아래의 주소를 확인하시고 선택하신 후 확인버튼을 누르세요. </li>
 								<li>정확한 우편물 발송을 위해 표준화 도로명주소 사용을 권장합니다.</li>
 							</ul>
-						
-						
+
+
 							<div class="road_type">
 								<input class="hand" id="road" name="Type" type="radio" tabindex=1>
 								<label class="hand" for="road">표준화 도로명주소</label>
@@ -210,7 +210,7 @@
 								<a href="zipcode_search.php"><p class="btn_reset hand" tabindex=6>다시검색</p></a>
 							</div>
 						</div>
-					
+
 					</fieldset>
 				<br />
 			</div>
@@ -221,7 +221,7 @@
 
 			document.getElementById('content_juso').style.display="none";
 			document.getElementById('content_detail').style.display="none";
-			
+
 			// 검색결과 화면 출력
 			if(document.getElementById('zipcode') != null){
 				document.getElementById('content_juso').style.display='';
@@ -243,20 +243,20 @@
 		function nextPage(){
 			currentPage = document.getElementById('current_page').innerText;
 			totalPage = document.getElementById('end_page').innerText;
-			
+
 			if (currentPage < totalPage)
 			{
-				document.getElementById('PageNum').value = currentPage*1 + 1;				
+				document.getElementById('PageNum').value = currentPage*1 + 1;
 				document.getElementById('zipcode_form').submit();
 			}
 		}
-			
+
 		// 이전페이지
 		function prevPage(){
 			currentPage = document.getElementById('current_page').innerText;
 
 				if(currentPage > 1){
-				document.getElementById('PageNum').value = currentPage*1 -1;			
+				document.getElementById('PageNum').value = currentPage*1 -1;
 				document.getElementById('zipcode_form').submit();
 			}
 		}
@@ -278,7 +278,7 @@
 			document.getElementById('content_result').style.display="none";
 			document.getElementById('content_juso').style.display="none";
 			document.getElementById('content_detail').style.display='';
-			
+
 			if(type == "roadAddr"){
 				document.getElementById('road').checked = true;
 			}else {
@@ -302,13 +302,13 @@
 			document.getElementById('jibunAddr').innerHTML = jibunAddr;
 		}
 
-		// 부모 페이지로 우편번호, 주소 전달	
+		// 부모 페이지로 우편번호, 주소 전달
 		function inputAddr(){
-				
+
 			// 도로명주소 선택시.
 			if(document.getElementById('road').checked){
 
-				zipcode = document.getElementById('road_zipcode').value;
+				zipcode = document.getElementById('road_sectionNum').value;
 				roadAddr1 = document.getElementById('roadAddr1').value;
 				roadAddr2 = document.getElementById('roadAddr2').value;
 				roadAddrDetail = document.getElementById('road_detail').value;
@@ -321,7 +321,7 @@
 
 				// 지번주소 선택시.
 				} else {
-					zipcode = document.getElementById('jibun_zipcode').value;
+					zipcode = document.getElementById('jibun_sectionNum').value;
 					addrResult = document.getElementById('jibunAddr').value;
 					detail = document.getElementById('jibun_detail').value;
 
