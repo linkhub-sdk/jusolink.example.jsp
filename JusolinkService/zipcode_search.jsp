@@ -86,11 +86,11 @@
 				%>
 
 					<fieldset class="fieldset6 left">
-						<p> <span class="zipcode" id="zipcode"><%=juso.get(i).getZipcode()%></span> <span>(<%=juso.get(i).getSectionNum()%>)</span></p>
-						<p class="hand" onclick='detail("roadAddr", "<%=juso.get(i).getZipcode()%>", "<%=juso.get(i).getSectionNum()%>", "<%=juso.get(i).getRoadAddr1()%>", "<%=juso.get(i).getRoadAddr2()%>", "<%=juso.get(i).getJibunAddr()%>")'>
+						<p> <span class="zipcode" id="zipcode">우편번호 :</span> <span><%=juso.get(i).getSectionNum()%></span></p>
+						<p class="hand" onclick='detail("roadAddr", "<%=juso.get(i).getSectionNum()%>", "<%=juso.get(i).getRoadAddr1()%>", "<%=juso.get(i).getRoadAddr2()%>", "<%=juso.get(i).getJibunAddr()%>")'>
 							<img class="imgAlign" src="../resources/image/juso_icon_01.gif"/> <%=juso.get(i).getRoadAddr1()%> <%=juso.get(i).getRoadAddr2()%>
 						</p>
-						<p class="hand" onclick='detail("jibunAddr", "<%=juso.get(i).getZipcode()%>", "<%=juso.get(i).getSectionNum()%>", "<%=juso.get(i).getRoadAddr1()%>", "<%=juso.get(i).getRoadAddr2()%>", "<%=juso.get(i).getJibunAddr()%>")'>
+						<p class="hand" onclick='detail("jibunAddr", "<%=juso.get(i).getSectionNum()%>", "<%=juso.get(i).getRoadAddr1()%>", "<%=juso.get(i).getRoadAddr2()%>", "<%=juso.get(i).getJibunAddr()%>")'>
 							<img class="imgAlign" src="../resources/image/juso_icon_02.gif"/> <%=juso.get(i).getJibunAddr()%>
 						</p>
 
@@ -151,7 +151,6 @@
 										<tr class="code">
 											<th>우편번호</th>
 											<td>
-												<span class="zipcode" id="road_zipcode"></span>
 												<span class="sectionNum" id="road_sectionNum"></span>
 											</td>
 										</tr>
@@ -185,7 +184,6 @@
 										<tr class="code">
 											<th>우편번호</th>
 											<td>
-												<span class="zipcode" id="jibun_zipcode"></span>
 												<span class="sectionNum" id="jibun_sectionNum"></span>
 											</td>
 										</tr>
@@ -274,7 +272,7 @@
 		}
 
 		// 상세주소 입력폼 호출
-		function detail(type, zipcode, sectionNum, roadAddr1, roadAddr2, jibunAddr){
+		function detail(type, sectionNum, roadAddr1, roadAddr2, jibunAddr){
 			document.getElementById('content_result').style.display="none";
 			document.getElementById('content_juso').style.display="none";
 			document.getElementById('content_detail').style.display='';
@@ -285,18 +283,14 @@
 				document.getElementById('jibun').checked = true;
 			}
 
-			document.getElementById('road_zipcode').innerHTML = zipcode;
-			document.getElementById('road_zipcode').value = zipcode;
-			document.getElementById('road_sectionNum').innerHTML = "("+sectionNum+")";
+			document.getElementById('road_sectionNum').innerHTML = sectionNum;
 			document.getElementById('road_sectionNum').value = sectionNum;
 			document.getElementById('roadAddr1').innerHTML = roadAddr1;
 			document.getElementById('roadAddr1').value = roadAddr1;
 			document.getElementById('roadAddr2').innerHTML = roadAddr2;
 			document.getElementById('roadAddr2').value = roadAddr2;
 
-			document.getElementById('jibun_zipcode').innerHTML = zipcode;
-			document.getElementById('jibun_zipcode').value = zipcode;
-			document.getElementById('jibun_sectionNum').innerHTML = "("+sectionNum+")";
+			document.getElementById('jibun_sectionNum').innerHTML = sectionNum;
 			document.getElementById('jibun_sectionNum').value = sectionNum;
 			document.getElementById('jibunAddr').value = jibunAddr;
 			document.getElementById('jibunAddr').innerHTML = jibunAddr;
@@ -318,17 +312,15 @@
 				} else {
 					addrResult = roadAddr1 +" "+roadAddr2;
 				}
-
-				// 지번주소 선택시.
-				} else {
-					zipcode = document.getElementById('jibun_sectionNum').value;
-					addrResult = document.getElementById('jibunAddr').value;
-					detail = document.getElementById('jibun_detail').value;
-
-					if(detail != ''){
-						addrResult += ', '+ detail;
-					}
+			// 지번주소 선택시.
+			} else {
+				zipcode = document.getElementById('jibun_sectionNum').value;
+				addrResult = document.getElementById('jibunAddr').value;
+				detail = document.getElementById('jibun_detail').value;
+				if(detail != ''){
+					addrResult += ', '+ detail;
 				}
+			}
 
 				window.opener.putAddr(zipcode, addrResult);
 				self.close();

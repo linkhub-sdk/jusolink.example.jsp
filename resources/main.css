@@ -43,7 +43,7 @@ a:hover { color: #336699; font-weight: bold; font-size:12px; text-decoration: un
 .find_btn {	float: left; line-height: 26px; width: 78px; height: 31px; margin: 10px 0 10px 3px; padding: 0 0 0 0; text-align:center; font-size:12px; font-weight:bold; color:#fff; background: url("./image/example_btn_01.gif") no-repeat left top; }
 
 .imgAlign{ vertical-align:top; margin-top : 0px;}
-.zipcode{ color: #d73246 } 
+ 
 
 .select_box {padding:0 10px 0 10px; width:435px}
 .select_box ul{	padding: 0 0 0 7px;	margin: 0 0 0 0;}
